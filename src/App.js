@@ -4,7 +4,7 @@ import './App.css';
 import CharacterCard from './CharacterCard';
 import WordCard from './WordCard';
 
-const word = ['้dust', 'best','army','bank','black','chin' , 'evil','fact','fine','host','joke','main'];
+const word = ['dust', 'best','army','bank','black','chin' , 'evil','fact','fine','host','joke','main'];
 var item = word[Math.floor(Math.random()*word.length)];
 //var requstAns
 
