@@ -4,7 +4,7 @@ import './App.css';
 import CharacterCard from './CharacterCard';
 import WordCard from './WordCard';
 
-const word = ['Hello', 'React','Engineer','Computer'];
+const word = ['Hello', 'React','Engineer','Computer','Black','Cat' , 'Eat'];
 var item = word[Math.floor(Math.random()*word.length)];
 
 
@@ -27,6 +27,7 @@ class App extends Component{
         <h2 id="input"></h2>
         <h2 id="result"></h2>
         <h2 id="Ans"></h2>
+        <h2 id="hint1"></h2>
         <button id="newgame" class="button" onClick={this.newgame}>NewGame</button>
       </div>
     );

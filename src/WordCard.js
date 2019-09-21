@@ -26,9 +26,11 @@ Component {
     activationHandler = (c) => {
         let guess = [...this.state.guess, c.toUpperCase()]
         this.setState({guess})
+        console.log(guess.join('').toString())
         document.getElementById('input').innerHTML = `${guess.join('').toString()}`
         if(guess.length == this.state.chars.length){
-            console.log(`${this.state.guess.join('').toString()} ${this.state.chars.join('').toString()}`)
+            console.log(`${guess.join('').toString()} ${this.state.chars.join('').toString()}`)
+            console.log(`${this.state.chars[1]}`)
             if(guess.join('').toString() == this.state.chars.join('').toString()){
                    this.setState({guess: [], completed: true})
                    document.getElementById('result').innerHTML = `Congratulations! You win` 
@@ -37,9 +39,12 @@ Component {
                     
                 this.setState({guess: [], attempt: this.state.attempt + 1})
                 document.getElementById('result').innerHTML = `Try again : ${this.state.attempt} (You can try again 3 time)  `
+                    if(this.state.attempt == 1){
+                        document.getElementById('hint1').innerHTML = `Hint : ${this.state.chars[0] }(first position)`       
+                    }
                     if(this.state.attempt == 3){
                         document.getElementById('result').innerHTML = `GameOver (wait 3 sec to newgame) `
-                        document.getElementById('Ans').innerHTML = `Answer = ${this.state.chars.join('').toString()}`
+                        document.getElementById('Ans').innerHTML = `Answer  = ${this.state.chars.join('').toString()}`
                         setTimeout(() =>  window.location.reload(false),2000) 
                        
                     }
