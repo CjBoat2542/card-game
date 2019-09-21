@@ -1,17 +1,20 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
+//import logo from './logo.svg';
 import './App.css';
 import CharacterCard from './CharacterCard';
 import WordCard from './WordCard'
-const word = ['Hello', 'Green'];
+const word = ['Hello', 'React','Engineer','Computer'];
 var item = word[Math.floor(Math.random()*word.length)];
 
 class App extends Component {
+
+  //console.log(`${this.item} Bravo!!!`)
   render() {
   return (
     <div className = 'App'>
  <WordCard value={item.toUpperCase()}/>
- <h2 id="nod">Hello World!</h2>
+ 
+ <h2 id="label">Welcome to random word game</h2>
  </div>
  );
   }
