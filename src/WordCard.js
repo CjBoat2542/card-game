@@ -30,7 +30,6 @@ Component {
         document.getElementById('input').innerHTML = `${guess.join('').toString()}`
         if(guess.length == this.state.chars.length){
             console.log(`${guess.join('').toString()} ${this.state.chars.join('').toString()}`)
-            console.log(`${this.state.chars[1]}`)
             if(guess.join('').toString() == this.state.chars.join('').toString()){
                    this.setState({guess: [], completed: true})
                    document.getElementById('result').innerHTML = `Congratulations! You win` 
@@ -56,6 +55,10 @@ Component {
         }
     }
 render() {
+    if(this.props.requstAns){
+        console.log(this.state.chars.join(''))
+        this.props.getAnswer(this.state.chars.join(''))
+    }
  return (
  <div>
         { Array.from(this.props.value).map((c, i) => <CharacterCard value={c} key={i} activationHandler={this.activationHandler} {...this.state}/>) }
