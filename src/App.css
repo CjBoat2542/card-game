@@ -47,4 +47,17 @@
   color: darkorange;
   background-color: darkblue;
 }
- 
+
+#tryagain{
+  color: darkorange;
+  background-color: darkblue;
+}
+.button{
+  text-align: center;
+  display: inline-block;
+  text-align: center;
+  font-size: 1.3em;
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  margin: 1em;
+  user-select: none;
+}

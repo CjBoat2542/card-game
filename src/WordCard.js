@@ -8,6 +8,7 @@ const prepareStateFromWord = (given_word) => {
     word,
     chars,
     attempt: 1,
+    tryagain: 3,
     guess: [],
     completed: false
     }
@@ -19,6 +20,8 @@ export default class WordCard extends Component {
         super(props)
         this.state = prepareStateFromWord(this.props.value)
     }
+
+
     
 activationHandler = (c) => { 
     console.log(`${c} has been activated.`)
@@ -29,11 +32,15 @@ activationHandler = (c) => {
        
     if(guess.join('').toString() == this.state.chars.join('').toString()){
     this.setState({guess: [], completed: true})
-    document.getElementById('result').innerHTML = `Congratulations! You win`
+    document.getElementById('result').innerHTML = `Congratulations! You win` 
     }else{
-    
-    this.setState({guess: [], attempt: this.state.attempt + 1})
-    document.getElementById('result').innerHTML = `Attempt: ${this.state.attempt} `
+        this.setState({guess: [], attempt: this.state.attempt + 1})
+        document.getElementById('result').innerHTML = `Try again (${this.state.attempt})  `
+        if(this.state.attempt == 3){
+            document.getElementById('result').innerHTML = `GameOver (wait 3 sec to newgame) `
+            setTimeout(() =>  window.location.reload(false),2000) 
+           
+        }
     }
     } 
    
