@@ -1,5 +1,6 @@
 .App {
   text-align: center;
+  background-color: yellow;
 }
 
 .App-logo {
@@ -22,8 +23,8 @@
 }
 
 .activeCard {
-  color: red;
-  background: greenyellow;
+  color: rgb(206, 165, 88);
+  background: blue;
  }
 
 .card {
@@ -36,7 +37,14 @@
   user-select: none;
  }
 
- #nod{
-  color: brown ; 
+ #label{
+  color: rgb(207, 78, 78) ; 
+  background-color: lightblue;
+  
+}
+
+#result{
+  color: darkorange;
+  background-color: darkblue;
 }
  

@@ -12,9 +12,9 @@ class App extends Component {
   render() {
   return (
     <div className = 'App'>
- <WordCard value={item.toUpperCase()}/>
- 
- <h2 id="label">Welcome to random word game</h2>
+      <h2 id="label">Welcome to random word game</h2>
+      <WordCard value={item.toUpperCase()}/>
+      <h2 id="result"></h2>
  </div>
  );
   }

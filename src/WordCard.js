@@ -29,11 +29,11 @@ activationHandler = (c) => {
        
     if(guess.join('').toString() == this.state.chars.join('').toString()){
     this.setState({guess: [], completed: true})
-    document.getElementById('label').innerHTML = `Congratulations!`
+    document.getElementById('result').innerHTML = `Congratulations! You win`
     }else{
     
     this.setState({guess: [], attempt: this.state.attempt + 1})
-    document.getElementById('label').innerHTML = `Attempt: ${this.state.attempt} `
+    document.getElementById('result').innerHTML = `Attempt: ${this.state.attempt} `
     }
     } 
    
