@@ -1,56 +1,57 @@
 import React, { Component } from 'react';
 import CharacterCard from './CharacterCard';
 import _ from 'lodash';
+import { thisTypeAnnotation } from '@babel/types';
+
 const prepareStateFromWord = (given_word) => {
-    let word = given_word.toUpperCase()
-    let chars = _.shuffle(Array.from(word))
+ let word = given_word.toUpperCase()
+ let chars = _.shuffle(Array.from(word))
     return {
-    word,
-    chars,
-    attempt: 1,
-    tryagain: 3,
-    guess: [],
-    completed: false
+            word,
+            chars,
+            attempt: 1,
+            guess: [],
+            completed: false
     }
-   }
+}
 
 
-export default class WordCard extends Component {
+export default class WordCard extends
+Component {
+
     constructor(props){
         super(props)
         this.state = prepareStateFromWord(this.props.value)
     }
-
-
-    
-activationHandler = (c) => { 
-    console.log(`${c} has been activated.`)
-    let guess = [...this.state.guess, c]
-    this.setState({guess})
-    
-    if(guess.length == this.state.chars.length){
-       
-    if(guess.join('').toString() == this.state.chars.join('').toString()){
-    this.setState({guess: [], completed: true})
-    document.getElementById('result').innerHTML = `Congratulations! You win` 
-    }else{
-        this.setState({guess: [], attempt: this.state.attempt + 1})
-        document.getElementById('result').innerHTML = `Try again (${this.state.attempt})  `
-        if(this.state.attempt == 3){
-            document.getElementById('result').innerHTML = `GameOver (wait 3 sec to newgame) `
-            setTimeout(() =>  window.location.reload(false),2000) 
-           
+    activationHandler = (c) => {
+        let guess = [...this.state.guess, c.toUpperCase()]
+        this.setState({guess})
+        document.getElementById('input').innerHTML = `${guess.join('').toString()}`
+        if(guess.length == this.state.chars.length){
+            console.log(`${this.state.guess.join('').toString()} ${this.state.chars.join('').toString()}`)
+            if(guess.join('').toString() == this.state.chars.join('').toString()){
+                   this.setState({guess: [], completed: true})
+                   document.getElementById('result').innerHTML = `Congratulations! You win` 
+            }
+            else{
+                    
+                this.setState({guess: [], attempt: this.state.attempt + 1})
+                document.getElementById('result').innerHTML = `Try again : ${this.state.attempt} (You can try again 3 time)  `
+                    if(this.state.attempt == 3){
+                        document.getElementById('result').innerHTML = `GameOver (wait 3 sec to newgame) `
+                        document.getElementById('Ans').innerHTML = `Answer = ${this.state.chars.join('').toString()}`
+                        setTimeout(() =>  window.location.reload(false),2000) 
+                       
+                    }
+                    
+            }
         }
     }
-    } 
-   
+render() {
+ return (
+ <div>
+        { Array.from(this.props.value).map((c, i) => <CharacterCard value={c} key={i} activationHandler={this.activationHandler} {...this.state}/>) }
+ </div>
+ );
  }
-        render(){
-            console.log(`${this.state.guess.join('').toString()} ${this.state.chars.join('').toString()}`)
-            return (
-                <div>
-                { Array.from(this.props.value).map((c, i) => <CharacterCard value={c} key={i} activationHandler={this.activationHandler} {...this.state}/>) }
-                 </div>
-            )
-            }
 }
